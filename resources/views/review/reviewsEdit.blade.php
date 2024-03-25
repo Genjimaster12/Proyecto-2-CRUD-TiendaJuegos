@@ -1,28 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Comentario</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/formulario.css">
+    <title>Nuevo Juego</title>
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <a href="{{ route('reviews.index') }}">Volver al Listado de Reviews</a>
-    <h1>Editar Comentario</h1>
-    <form action="{{ route('reviews.update', $review) }}" method="POST">
+    <div class="nav">
+        <a href="/juegos">Volver a la lista de juegos</a>
+    </div>
+    <form action="{{ route('juegos.store') }}" method="POST">
         @csrf
-        @method('PATCH')
-        <label for="Nombre_usuario">Nombre de Usuario</label>
-        <input type="text" name="Nombre_usuario" value="{{ old('Nombre_usuario') ?? $review->Nombre_usuario }}">
-        <br>
-        <label for="Nombre_Juego">Nombre del Juego</label>
-        <input type="text" name="Nombre_Juego" value="{{ old('Nombre_Juego') ?? $review->Nombre_Juego }}">
-        <br>
-        <label for="Puntuacion">Puntuación</label>
-        <input type="number" name="Puntuacion" value="{{ old('Puntuacion') ?? $review->Puntuacion }}">
-        <br>
-        <label for="Comentario">Comentario</label>
-        <textarea name="Comentario" cols="30" rows="10">{{ old('Comentario') ?? $review->Comentario }}</textarea>
-        <input type="submit" value="ENVIAR">
+        <div>
+            <h3>Nombre del Juego:</h3>
+            <input type="text" name="Nombre_Juego" id="Nombre_Juego" value="{{ old('Nombre_Juego') }}">
+            @error('Nombre_Juego')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
+        </div>
+        <div>
+            <h3>Desarrollador:</h3>
+            <input type="text" name="Desarrollador" id="Desarrollador" value="{{ old('Desarrollador') }}">
+            @error('Desarrollador')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
+        </div>
+        <div>
+            <h3>Categoría:</h3>
+            <input type="text" name="Categoria" id="Categoria" value="{{ old('Categoria') }}">
+            @error('Categoria')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
+        </div>
+        <div>
+            <h3>Descripción:</h3>
+            <textarea id="Descripcion" name="Descripcion" rows="5" cols="33">{{ old('Descripcion') }}</textarea>
+            @error('Descripcion')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
+        </div>
+        <div>
+            <h3>Precio:</h3>
+            <input type="text" name="Precio" id="Precio" value="{{ old('Precio') }}">
+            @error('Precio')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
+        </div>
+        <div>
+            <h3>Fecha de Lanzamiento:</h3>
+            <input type="date" name="Fecha_Lanzamiento" id="Fecha_Lanzamiento" value="{{ old('Fecha_Lanzamiento') }}">
+            @error('Fecha_Lanzamiento')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
+        </div>
+        <div>
+            <h3>Requisitos:</h3>
+            <textarea id="Requisitos" name="Requisitos" rows="5" cols="33">{{ old('Requisitos') }}</textarea>
+            @error('Requisitos')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
+        </div>
+        <div>
+            <button type="submit" id="button" name="button">Enviar formulario</button>
+        </div>
     </form>
 </body>
 </html>

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ReviewControlador extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show');
+        //Tambien se puede only para que solo se aplique a ciertos metodos
+    }
     /**
      * Display a listing of the resource.
      */

@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/formulario.css">
     <title>Editar Juego</title>
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="nav">
@@ -15,30 +20,51 @@
         <div>
             <h3>Nombre del Juego:</h3>
             <input type="text" name="Nombre_Juego" id="Nombre_Juego" value="{{ old('Nombre_Juego') ?? $juego->Nombre_Juego }}">
+            @error('Nombre_Juego')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <h3>Desarrollador:</h3>
             <input type="text" name="Desarrollador" id="Desarrollador" value="{{ old('Desarrollador') ?? $juego->Desarrollador }}">
+            @error('Desarrollador')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <h3>Categoría:</h3>
             <input type="text" name="Categoria" id="Categoria" value="{{ old('Categoria') ?? $juego->Categoria }}">
+            @error('Categoria')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <h3>Descripción:</h3>
             <textarea id="Descripcion" name="Descripcion" rows="5" cols="33">{{ old('Descripcion') ?? $juego->Descripcion }}</textarea>
+            @error('Descripcion')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <h3>Precio:</h3>
             <input type="text" name="Precio" id="Precio" value="{{ old('Precio') ?? $juego->Precio }}">
+            @error('Precio')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <h3>Fecha de Lanzamiento:</h3>
             <input type="date" name="Fecha_Lanzamiento" id="Fecha_Lanzamiento" value="{{ old('Fecha_Lanzamiento') ?? $juego->Fecha_Lanzamiento }}">
+            @error('Fecha_Lanzamiento')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <h3>Requisitos:</h3>
             <textarea id="Requisitos" name="Requisitos" rows="5" cols="33">{{ old('Requisitos') ?? $juego->Requisitos }}</textarea>
+            @error('Requisitos')
+                <div class='error-message'>{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <button type="submit" id="button" name="button">Guardar cambios</button>
